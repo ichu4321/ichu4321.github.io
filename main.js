@@ -48,7 +48,7 @@ var player = new Player(0,0, player_sprite, true, .15);
 var shield = new Shield(0,0, shield_sprite, true, 16);
 
 // ball object
-var ball = new Ball(canvas.scrollWidth/2, 100, ball_sprite, true, 200, 150, 16);
+var ball = new Ball(canvas.scrollWidth/2, 100, ball_sprite, true, 250, 250, 16);
 // console.log("Init Ball Pos: " + ball.x + ", " + ball.y);
 
 // enemy ships
@@ -218,7 +218,7 @@ function sleep(ms) {
 
 // swaps to gameover screen
 function set_gameover() {
-	// gameover = true;
+	gameover = true;
 	console.log("Set Gameover");
 	// not doing anything here anymore
 }
