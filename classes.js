@@ -178,16 +178,18 @@ class Shield extends Collider {
 	}
 	// dist to other
 	dist(otherx, othery) {
-		let diffx = otherx - this.x;
-		let diffy = othery - this.y;
+		let diffx = otherx - (this.x + this.sprite.width / 2);
+		let diffy = othery - (this.y + this.sprite.height / 2);
 		return Math.sqrt(Math.pow(diffx, 2) + Math.pow(diffy, 2));
 	}
 	// hazard collision
 	hazard_collision() {
 		for (a = 0; a < hazard_list.length; a++) {
 			let min_dist = this.radius + hazard_list[a].radius;
-			console.log("Mindist: " + min_dist);
-			if (this.dist(hazard_list[a].x, hazard_list[a].y) <= min_dist) {
+			console.log("Min_dist: " + min_dist);
+			let otherx = hazard_list[a].x + hazard_list[a].width / 2;
+			let othery = hazard_list[a].y + hazard_list[a].height / 2;
+			if (this.dist(otherx, othery) <= min_dist) {
 				// destroy bullet
 				delete hazard_list[a];
 				hazard_list.splice(a,1);
