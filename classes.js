@@ -200,8 +200,8 @@ class Shield extends Collider {
 		for (a = 0; a < hazard_list.length; a++) {
 			let min_dist = 30;
 			console.log("Min_dist: " + min_dist);
-			let otherx = hazard_list[a].x + hazard_list[a].width / 2;
-			let othery = hazard_list[a].y + hazard_list[a].height / 2;
+			let otherx = hazard_list[a].x + hazard_list[a].sprite.width / 2;
+			let othery = hazard_list[a].y + hazard_list[a].sprite.height / 2;
 			let range = this.dist(otherx, othery);
 			console.log("Range: " + range);
 			if (range <= min_dist) {
