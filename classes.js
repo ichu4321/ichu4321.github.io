@@ -186,6 +186,7 @@ class Shield extends Collider {
 	hazard_collision() {
 		for (a = 0; a < hazard_list.length; a++) {
 			let min_dist = this.radius + hazard_list[a].radius;
+			console.log("Mindist: " + min_dist);
 			if (this.dist(hazard_list[a].x, hazard_list[a].y) <= min_dist) {
 				// destroy bullet
 				delete hazard_list[a];
