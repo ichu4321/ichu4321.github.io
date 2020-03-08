@@ -121,16 +121,29 @@ class Ball extends Particle {
 		// left,right (remember: x,y is the top_left of the sprite)
 		if (this.x < 0 || this.x + this.radius * 2 > canvas.scrollWidth) {
 			this.velx = -this.velx;
+			if (this.x < 0) {
+				this.x = 0;
+			}
+			else {
+				this.x = canvas.scrollWidth - this.rasdius * 2;
+			}
 			// console.log("Side Wall Bounce: " + this.x + "|" + canvas.scrollWidth);
 		}
 		// up,down
 		if (this.y < 0 || this.y + this.radius * 2 > canvas.scrollHeight) {
 			this.vely = -this.vely;
+			if (this.y < 0) {
+				this.y = 0;
+			}
+			else {
+				this.y = this.canvas.scrollHeight - this.radius*2;
+			}
 			// console.log("Updown Wall Bounce: " + this.y + "|" + canvas.scrollHeight);
 		}
 		// bouncing off of the health indicator
 		if (this.y + this.radius * 2 >= health_indicator.y) {
 			this.vely = -this.vely;
+			this.y = health_indicator.y - this.radius * 2;
 			// update health indicator
 			health_index += 1;
 			if (health_index < back.length) {
