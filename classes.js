@@ -125,7 +125,7 @@ class Ball extends Particle {
 				this.x = 0;
 			}
 			else {
-				this.x = canvas.scrollWidth - this.rasdius * 2;
+				this.x = canvas.scrollWidth - this.radius * 2;
 			}
 			// console.log("Side Wall Bounce: " + this.x + "|" + canvas.scrollWidth);
 		}
