@@ -6,11 +6,7 @@ var scalex = canvas.width / canvas.scrollWidth;
 var scaley = canvas.height / canvas.scrollHeight;
 // canvas.style.cursor = "none";
 
-// if in portrait mode, set to fill the screen
-if (window.innerWidth < window.innerHeight) {
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
-}
+
 
 // get game resources
 var player_sprite = new Image();
@@ -97,6 +93,11 @@ function init() {
 // main loop
 var frame_counter = 0;
 function mainLoop() {
+	// if in portrait mode, set to fill the screen
+	if (window.innerWidth < window.innerHeight) {
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+	}
 	// only do things if not in gameover mode
 	if (!gameover) {
 		// get time diff
