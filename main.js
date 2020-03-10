@@ -2,8 +2,8 @@
 var canvas = document.getElementById("game_window");
 var context = canvas.getContext("2d");
 context.font = "16px Arial";
-var scalex = canvas.width / canvas.scrollWidth;
-var scaley = canvas.height / canvas.scrollHeight;
+var scalex = canvas.width / canvas.width;
+var scaley = canvas.height / canvas.height;
 // canvas.style.cursor = "none";
 
 
@@ -35,7 +35,7 @@ back[0].src = "green_box.png";
 back[1].src = "yellow_box.png";
 back[2].src = "red_box.png";
 var health_index = 0;
-var health_indicator = new Object(0, canvas.scrollHeight - 50, back[health_index], true);
+var health_indicator = new Object(0, canvas.height - 50, back[health_index], true);
 // WARNING: sprite width and height are 0 for some reason
 // this is because the image hasn't actually loaded yet
 // gonna need some js voodoo to make this all work
@@ -50,7 +50,7 @@ var player = new Player(0,0, player_sprite, true, .15);
 var shield = new Shield(0,0, shield_sprite, true, 16);
 
 // ball object
-var ball = new Ball(canvas.scrollWidth/2, 100, ball_sprite, true, 250, 250, 16);
+var ball = new Ball(canvas.width/2, 100, ball_sprite, true, 250, 250, 16);
 // console.log("Init Ball Pos: " + ball.x + ", " + ball.y);
 
 // enemy ships
@@ -71,8 +71,8 @@ var gameover = false;
 var stun_timer = 0;
 
 // register mouse position and move through the update function
-var mousex = canvas.scrollWidth / 2;
-var mousey = canvas.scrollHeight * .75;
+var mousex = canvas.width / 2;
+var mousey = canvas.height * .75;
 
 // init onload
 window.onload = init();
@@ -84,8 +84,8 @@ function init() {
 
 	// fill parallax layer
 	for (a=0; a<20; a++) {
-		randx = randInt(0, canvas.scrollWidth);
-		randy = randInt(0, canvas.scrollHeight);
+		randx = randInt(0, canvas.width);
+		randy = randInt(0, canvas.height);
 		bg_layer.addElem(randx, randy, star_sprite);
 	}
 }
@@ -98,7 +98,7 @@ function mainLoop() {
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
 		console.log("canvas w/h: " + canvas.width + ", " + canvas.height);
-		console.log("scroll w/h: " + canvas.scrollHeight + ", " + canvas.scrollWidth);
+		console.log("scroll w/h: " + canvas.height + ", " + canvas.width);
 	}
 	// only do things if not in gameover mode
 	if (!gameover) {
@@ -136,8 +136,8 @@ function spawn(dt) {
 		next_spawn = randFloat(spawn_range[0], spawn_range[1]);
 		// spawn new enemy
 		let sprite = enemy1_sprite;
-		let rx = randInt(0, canvas.scrollWidth - sprite.width * 2);
-		let ry = randInt(sprite.height*2, canvas.scrollHeight / 3);
+		let rx = randInt(0, canvas.width - sprite.width * 2);
+		let ry = randInt(sprite.height*2, canvas.height / 3);
 		let new_enemy = new Enemy(rx, -16, sprite, true, 16, 0, ry, .15);
 		// console.log("Spawned new enemy: " + rx + ", " + ry);
 	}
@@ -156,7 +156,7 @@ function update(dt) {
 	for (a = 0; a <hazard_list.length; a++) {
 		hazard_list[a].update(dt);
 		// destroy if off the canvas
-		if (hazard_list[a].y > canvas.scrollHeight) {
+		if (hazard_list[a].y > canvas.height) {
 			delete hazard_list[a];
 			hazard_list.splice(a,1);
 			a - 1;

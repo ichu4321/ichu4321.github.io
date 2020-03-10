@@ -119,26 +119,26 @@ class Ball extends Particle {
 	wall_bounce() {
 		// check for wall bounce
 		// left,right (remember: x,y is the top_left of the sprite)
-		if (this.x < 0 || this.x + this.radius * 2 > canvas.scrollWidth) {
+		if (this.x < 0 || this.x + this.radius * 2 > canvas.width) {
 			this.velx = -this.velx;
 			if (this.x < 0) {
 				this.x = 0;
 			}
 			else {
-				this.x = canvas.scrollWidth - this.radius * 2;
+				this.x = canvas.width - this.radius * 2;
 			}
-			// console.log("Side Wall Bounce: " + this.x + "|" + canvas.scrollWidth);
+			// console.log("Side Wall Bounce: " + this.x + "|" + canvas.width);
 		}
 		// up,down
-		if (this.y < 0 || this.y + this.radius * 2 > canvas.scrollHeight) {
+		if (this.y < 0 || this.y + this.radius * 2 > canvas.height) {
 			this.vely = -this.vely;
 			if (this.y < 0) {
 				this.y = 0;
 			}
 			else {
-				this.y = this.canvas.scrollHeight - this.radius*2;
+				this.y = this.canvas.height - this.radius*2;
 			}
-			// console.log("Updown Wall Bounce: " + this.y + "|" + canvas.scrollHeight);
+			// console.log("Updown Wall Bounce: " + this.y + "|" + canvas.height);
 		}
 		// bouncing off of the health indicator
 		if (this.y + this.radius * 2 >= health_indicator.y) {
@@ -253,10 +253,10 @@ class ParallaxLayer {
 		for (a = 0; a < this.elems.length; a++) {
 			this.elems[a].update(dt);
 			// check if out of bounds
-			if (this.elems[a].y > canvas.scrollHeight) {
+			if (this.elems[a].y > canvas.height) {
 				// reset
 				this.elems[a].y = 0;
-				this.elems[a].x = randInt(0,canvas.scrollWidth);
+				this.elems[a].x = randInt(0,canvas.width);
 			}
 		}
 	}
