@@ -97,6 +97,8 @@ function mainLoop() {
 	if (window.innerWidth < window.innerHeight) {
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
+		console.log("canvas w/h: " + canvas.width + ", " + canvas.height);
+		console.log("scroll w/h: " + canvas.scrollHeight + ", " + canvas.scrollWidth);
 	}
 	// only do things if not in gameover mode
 	if (!gameover) {
