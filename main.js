@@ -6,6 +6,12 @@ var scalex = canvas.width / canvas.scrollWidth;
 var scaley = canvas.height / canvas.scrollHeight;
 // canvas.style.cursor = "none";
 
+// if in portrait mode, set to fill the screen
+if (window.innerWidth < window.innerHeight) {
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+}
+
 // get game resources
 var player_sprite = new Image();
 player_sprite.src = "ship.png";
