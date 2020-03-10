@@ -100,6 +100,10 @@ function mainLoop() {
 		console.log("canvas w/h: " + canvas.width + ", " + canvas.height);
 		console.log("scroll w/h: " + canvas.height + ", " + canvas.width);
 	}
+	else {
+		canvas.width = 400;
+		canvas.height = 800;
+	}
 	// only do things if not in gameover mode
 	if (!gameover) {
 		// get time diff
