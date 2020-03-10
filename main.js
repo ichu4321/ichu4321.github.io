@@ -21,8 +21,8 @@ if (window.innerWidth < window.innerHeight) {
 else {
 	canvas.width = 377;
 	canvas.height = 600;
-	canvas.style.width = window.innerWidth + "px";
-	canvas.style.height = window.innerHeight + "px";
+	canvas.style.width = 377 + "px";
+	canvas.style.height = 600 + "px";
 }
 
 // get game resources
