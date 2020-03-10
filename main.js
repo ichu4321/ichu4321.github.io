@@ -98,6 +98,8 @@ function mainLoop() {
 		if (canvas.width != window.innerWidth || canvas.height != window.innerHeight) {
 			canvas.width = window.innerWidth;
 			canvas.height = window.innerHeight;
+			canvas.style.width = window.innerWidth + "px";
+			canvas.style.height = window.innerHeight + "px";
 			console.log("canvas w/h: " + canvas.width + ", " + canvas.height);
 			console.log("scroll w/h: " + canvas.scrollWidth + ", " + canvas.scrollHeight);
 			console.log("client w/h: " + canvas.clientWidth + ", " + canvas.clientHeight);
