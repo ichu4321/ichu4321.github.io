@@ -6,7 +6,24 @@ var scalex = canvas.width / canvas.width;
 var scaley = canvas.height / canvas.height;
 // canvas.style.cursor = "none";
 
-
+// if in portrait mode, set to fill the screen
+if (window.innerWidth < window.innerHeight) {
+	if (canvas.width != window.innerWidth || canvas.height != window.innerHeight) {
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		canvas.style.width = window.innerWidth + "px";
+		canvas.style.height = window.innerHeight + "px";
+		console.log("canvas w/h: " + canvas.width + ", " + canvas.height);
+		console.log("scroll w/h: " + canvas.scrollWidth + ", " + canvas.scrollHeight);
+		console.log("client w/h: " + canvas.clientWidth + ", " + canvas.clientHeight);
+	}
+}
+else {
+	canvas.width = 377;
+	canvas.height = 600;
+	canvas.style.width = window.innerWidth + "px";
+	canvas.style.height = window.innerHeight + "px";
+}
 
 // get game resources
 var player_sprite = new Image();
@@ -93,22 +110,6 @@ function init() {
 // main loop
 var frame_counter = 0;
 function mainLoop() {
-	// if in portrait mode, set to fill the screen
-	if (window.innerWidth < window.innerHeight) {
-		if (canvas.width != window.innerWidth || canvas.height != window.innerHeight) {
-			canvas.width = window.innerWidth;
-			canvas.height = window.innerHeight;
-			canvas.style.width = window.innerWidth + "px";
-			canvas.style.height = window.innerHeight + "px";
-			console.log("canvas w/h: " + canvas.width + ", " + canvas.height);
-			console.log("scroll w/h: " + canvas.scrollWidth + ", " + canvas.scrollHeight);
-			console.log("client w/h: " + canvas.clientWidth + ", " + canvas.clientHeight);
-		}
-	}
-	else {
-		canvas.width = 400;
-		canvas.height = 800;
-	}
 	// only do things if not in gameover mode
 	if (!gameover) {
 		// get time diff
