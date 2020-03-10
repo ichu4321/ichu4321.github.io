@@ -95,10 +95,13 @@ var frame_counter = 0;
 function mainLoop() {
 	// if in portrait mode, set to fill the screen
 	if (window.innerWidth < window.innerHeight) {
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
-		console.log("canvas w/h: " + canvas.width + ", " + canvas.height);
-		console.log("scroll w/h: " + canvas.height + ", " + canvas.width);
+		if (canvas.width != window.innerWidth || canvas.height != window.innerHeight) {
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+			console.log("canvas w/h: " + canvas.width + ", " + canvas.height);
+			console.log("scroll w/h: " + canvas.scrollWidth + ", " + canvas.scrollHeight);
+			console.log("client w/h: " + canvas.clientWidth + ", " + canvas.clientHeight);
+		}
 	}
 	else {
 		canvas.width = 400;
